@@ -11,7 +11,7 @@ export default class Authors extends React.Component {
     this.state = {
       authors: [],
       searchQuery: "",
-      currentIndex: 0
+      page: 1
     }
   }
 
@@ -23,13 +23,13 @@ export default class Authors extends React.Component {
     this.setState({
       authors: searchedAuthors,
       searchQuery,
-      currentIndex: 0
+      page: 1
     });
   };
 
-  setCurrentIndex = (index) => {
+  setPage = (page) => {
     this.setState({
-      currentIndex: index
+      page
     });
   };
 
@@ -50,14 +50,15 @@ export default class Authors extends React.Component {
 
 
   render() {
-    const {authors, currentIndex, searchQuery} = this.state;
+    const {authors, page, searchQuery} = this.state;
+    const arrayIndex = (page - 1) * 10
     return (
-      <>
+      <div>
         <Search
           handleSearch={this.handleSearch}
           searchQuery={searchQuery}/>
         <ol>
-          {authors.slice(currentIndex, currentIndex + 10).map((item) => {
+          {authors.slice(arrayIndex, arrayIndex + 10).map((item) => {
             return <Author
               /*TODO key values*/
               key={item.name}
@@ -66,9 +67,9 @@ export default class Authors extends React.Component {
         </ol>
         <PageNavigation
           authorsCount={authors.length}
-          currentIndex={currentIndex}
-          setCurrentIndex={this.setCurrentIndex}/>
-      </>
+          page={page}
+          setPage={this.setPage}/>
+      </div>
     );
   }
 }
