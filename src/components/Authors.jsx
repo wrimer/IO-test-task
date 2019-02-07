@@ -20,7 +20,7 @@ export default class Authors extends React.Component {
   }
 
   handleSearch = ({target: {value: searchQuery}}) => {
-    const searchedAuthors = this.initialAuthors.filter((item) => {
+    const searchedAuthors = this.defaultAuthors.filter((item) => {
       return item.name.toLowerCase().includes(searchQuery.toLowerCase());
     });
     this.setState({
@@ -30,15 +30,15 @@ export default class Authors extends React.Component {
     });
   };
 
-  handleSort = ({target: {name: value}}) => {
+  handleSort = ({target: {name: sortBy}}) => {
     let authors = this.state.authors;
-    switch (value) {
+    switch (sortBy) {
       case SORT_BY_VIEWS:
-        this.initialAuthors = this.initialAuthors.sort(this.sortByViews);
+        this.defaultAuthors = this.defaultAuthors.sort(this.sortByViews);
         authors = authors.sort(this.sortByViews);
         break;
       case SORT_BY_NAME:
-        this.initialAuthors = this.initialAuthors.sort(this.sortByNames);
+        this.defaultAuthors = this.defaultAuthors.sort(this.sortByNames);
         authors = authors.sort(this.sortByNames);
         break;
       default:
@@ -46,7 +46,7 @@ export default class Authors extends React.Component {
     }
     this.setState({
       authors,
-      sortBy: value,
+      sortBy,
       page: 1
     });
   };
@@ -76,7 +76,7 @@ export default class Authors extends React.Component {
     this.setState({
       authors
     }, () => {
-      this.initialAuthors = authors;
+      this.defaultAuthors = authors;
     });
   }
 
@@ -92,15 +92,12 @@ export default class Authors extends React.Component {
         <div
           className="authors">
           <Search
-            sortBy={sortBy}
             handleSearch={this.handleSearch}
-            handleSort={this.handleSort}
             searchQuery={searchQuery}/>
           <ol>
             {authors.slice(arrayIndex, arrayIndex + 10).map((item, index) => {
               return <Author
-                /*TODO key values*/
-                key={item.name}
+                key={`${item.name}${item.pageviews}${item.count_pub}`}
                 user={item}
                 index={arrayIndex + index}/>
             })}
