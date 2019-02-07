@@ -1,6 +1,7 @@
 @import "variables"
 
 @import "author"
+@import "pagination"
 
 html
 	min-height: 100%
@@ -17,7 +18,7 @@ body
 	box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.75)
 	overflow: hidden
 	background-color: $white
-	max-width: 990px
+	max-width: 760px
 	margin: 40px auto 0
 	border-radius: 8px
 
@@ -38,12 +39,15 @@ body
 		height: 16px
 
 	&__input
-		color: $textgray
+		font-size: 16px
+		color: $textblue
 		font-weight: 700
 		flex-grow: 1
 		padding: 16px 16px 16px 32px
 		background: none
 		border: none
+		&::placeholder
+			color: $textgray
 
 .avatar
 	box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.35)

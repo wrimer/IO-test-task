@@ -1,0 +1,21 @@
+.pagination
+	margin: 16px 0
+	display: flex
+	justify-content: center
+	color: $white
+	font-weight: 700
+
+	&__btn
+		cursor: pointer
+		border: none
+		background: url("../img/arrow.svg") no-repeat center
+		&:disabled
+			opacity: .3
+
+	&__btn_prev
+		margin-right: 24px
+
+	&__btn_next
+		margin-left: 24px
+		transform: rotate(180deg)
+

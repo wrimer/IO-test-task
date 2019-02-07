@@ -46,7 +46,8 @@ export default class Authors extends React.Component {
     }
     this.setState({
       authors,
-      sortBy: value
+      sortBy: value,
+      page: 1
     });
   };
 

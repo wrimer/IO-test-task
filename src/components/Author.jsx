@@ -5,6 +5,7 @@ const Author = ({user, index}) => (
   <li className={"author " + (((index % 2) ? "author_odd" : ""))}>
     <p className="author__index">{index + 1}</p>
     <Avatar
+      views={user.pageviews}
       name={user.name}/>
     <div className="author__info">
       <p className="author__name">{user.name}</p>
