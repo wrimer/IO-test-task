@@ -1,0 +1,33 @@
+.sortBy
+	margin-top: 24px
+	display: flex
+	justify-content: center
+	+sm
+		margin-top: 16px
+		flex-direction: column
+
+	&__label
+		cursor: pointer
+		margin-left: 48px
+		position: relative
+		color: $white
+		font-weight: 700
+		+sm
+			margin-left: 16px
+			margin-top: 8px
+
+	&__radio
+		display: none
+
+	&__checked
+		position: absolute
+		width: 16px
+		height: 16px
+		left: -2px
+		top: 50%
+		transform: translateY(-50%) translateX(-100%)
+		background: url("../img/unchecked.svg") no-repeat center
+
+	&__radio:checked + .sortBy__checked
+		background: url("../img/checked.svg") no-repeat center
+
