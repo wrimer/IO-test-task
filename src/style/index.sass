@@ -1,0 +1,59 @@
+@import "variables"
+
+@import "author"
+
+html
+	min-height: 100%
+
+body
+	font-family: sans-serif
+	color: $textgray
+	height: 100%
+	font-size: 16px
+	margin: 0
+	background: linear-gradient(#122c3f, #275f88)
+
+.authors
+	box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.75)
+	overflow: hidden
+	background-color: $white
+	max-width: 990px
+	margin: 40px auto 0
+	border-radius: 8px
+
+.search
+	display: flex
+	position: relative
+	background-color: $lightblue
+
+	&:before
+		top: 50%
+		left: 12px
+		transform: translateY(-50%)
+		content: ''
+		position: absolute
+		background: url("../img/search.svg") no-repeat center
+		background-size: cover
+		width: 16px
+		height: 16px
+
+	&__input
+		color: $textgray
+		font-weight: 700
+		flex-grow: 1
+		padding: 16px 16px 16px 32px
+		background: none
+		border: none
+
+.avatar
+	box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.35)
+	display: flex
+	align-items: center
+	justify-content: center
+	margin-right: 12px
+	border-radius: 50%
+	font-size: 24px
+	width: 48px
+	height: 48px
+	color: $white
+	font-weight: 700

@@ -1,7 +1,8 @@
 import React from 'react';
 import Author from './Author'
-import Filter from './Filter'
+import Search from './Search'
 import PageNavigation from './PageNavigation'
+import SortBy from './SortBy'
 import data from '../data/data'
 import {SORT_BY_NAME, SORT_BY_VIEWS} from '../data/constants'
 
@@ -83,25 +84,32 @@ export default class Authors extends React.Component {
     const {authors, page, searchQuery, sortBy} = this.state;
     const arrayIndex = (page - 1) * 10;
     return (
-      <div>
-        <Filter
+      <>
+        <SortBy
           sortBy={sortBy}
-          handleSearch={this.handleSearch}
-          handleSort={this.handleSort}
-          searchQuery={searchQuery}/>
-        <ol>
-          {authors.slice(arrayIndex, arrayIndex + 10).map((item) => {
-            return <Author
-              /*TODO key values*/
-              key={item.name}
-              user={item}/>
-          })}
-        </ol>
+          handleSort={this.handleSort}/>
+        <div
+          className="authors">
+          <Search
+            sortBy={sortBy}
+            handleSearch={this.handleSearch}
+            handleSort={this.handleSort}
+            searchQuery={searchQuery}/>
+          <ol>
+            {authors.slice(arrayIndex, arrayIndex + 10).map((item, index) => {
+              return <Author
+                /*TODO key values*/
+                key={item.name}
+                user={item}
+                index={arrayIndex + index}/>
+            })}
+          </ol>
+        </div>
         <PageNavigation
           authorsCount={authors.length}
           page={page}
           setPage={this.setPage}/>
-      </div>
+      </>
     );
   }
 }

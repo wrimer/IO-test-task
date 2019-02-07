@@ -1,9 +1,9 @@
 import React from 'react';
-import {SORT_BY_NAME, SORT_BY_VIEWS} from '../data/constants'
+import {SORT_BY_NAME, SORT_BY_VIEWS} from "../data/constants";
 
-const Filter = ({handleSearch, handleSort, searchQuery, sortBy}) => (
-  <form>
-    <div>
+const SortBy = ({sortBy, handleSort}) => (
+  <>
+    <div className="filters__sort">
       <label>
         <input
           type="radio"
@@ -21,12 +21,7 @@ const Filter = ({handleSearch, handleSort, searchQuery, sortBy}) => (
         Отсортировать по алфавиту
       </label>
     </div>
-    <input
-      type="text"
-      placeholder="Search"
-      value={searchQuery}
-      onChange={handleSearch}/>
-  </form>
+  </>
 );
 
-export default Filter;
+export default SortBy;
